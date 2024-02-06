@@ -1,0 +1,6 @@
+@CrudRestApiWithDotNetCore8_HostAddress = http://localhost:5227
+
+GET {{CrudRestApiWithDotNetCore8_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

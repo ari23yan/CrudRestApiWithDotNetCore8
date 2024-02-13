@@ -7,8 +7,8 @@ namespace CrudRestApiWithDotNetCore8.Models.Dtos
         [BsonElement("name")]
         public string Name { get; set; }
 
-        [BsonElement("family")]
-        public string family { get; set; }
+        [BsonElement("family")] 
+        public string Family { get; set; }
 
         [BsonElement("age")]
         public int Age { get; set; }

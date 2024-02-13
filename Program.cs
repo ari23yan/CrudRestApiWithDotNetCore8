@@ -8,6 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddControllersWithViews()
     .AddFluentValidation(options =>
     {
@@ -28,7 +40,8 @@ builder.Services.Configure<MongoDBSettings>(
 builder.Services.AddAutoMapper(typeof(Program));
 
 
-builder.Services.AddSingleton<IMongoDatabase>(options => {
+builder.Services.AddSingleton<IMongoDatabase>(options =>
+{
     var settings = builder.Configuration.GetSection("MongoDBSettings").Get<MongoDBSettings>();
     var client = new MongoClient(settings.ConnectionString);
     return client.GetDatabase(settings.DatabaseName);
@@ -43,8 +56,10 @@ builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
 
+var app = builder.Build();
+app.UseRouting();
+app.UseCors("AllowOrigin");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -53,6 +68,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 
 app.UseAuthorization();
 

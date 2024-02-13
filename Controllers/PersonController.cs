@@ -34,11 +34,11 @@ namespace CrudRestApiWithDotNetCore8.Controllers
       
         }
         [HttpGet]
-        public async Task<IActionResult> GetPerson([FromQuery] string id)
+        public async Task<IActionResult> GetPerson([FromQuery] string personId)
         {
             try
             {
-                var person = await _personRepository.GetByIdAsync(id);
+                var person = await _personRepository.GetByIdAsync(personId);
                 if (person == null)
                 {
                     return NotFound();

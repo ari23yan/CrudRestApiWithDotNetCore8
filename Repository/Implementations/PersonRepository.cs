@@ -16,7 +16,7 @@ namespace CrudRestApiWithDotNetCore8.Repository.Implementations
 
         public async Task<List<Person>> GetAllAsync()
         {
-            return await _personCollection.Find(_ => true).ToListAsync();
+            return await _personCollection.Find(_ =>  !_.IsDeleted).ToListAsync();
         }
 
         public async Task<Person> GetByIdAsync(string id)

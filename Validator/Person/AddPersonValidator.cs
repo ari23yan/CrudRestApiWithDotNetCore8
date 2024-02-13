@@ -9,7 +9,7 @@ namespace CrudRestApiWithDotNetCore8.Validator.Person
         {
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Age).ExclusiveBetween(8,50).NotEmpty();
-            RuleFor(x => x.family).NotEmpty();
+            RuleFor(x => x.Family).NotEmpty();
         }
     }
 }

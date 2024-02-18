@@ -1,10 +1,12 @@
 
 import React, { useState } from "react";
+import {  toast } from 'react-toastify';
 
-const AddPerson = ({ onClose,onSubmit }) => {
+
+const  AddPerson = ({ onClose,onSubmit }) => {
 
 
-   const validateAndSubmitForm = () =>
+    const  validateAndSubmitForm = async () =>
    {
     var name = document.getElementById('name-input').value;
     var family = document.getElementById('family-input').value;
@@ -22,10 +24,23 @@ const AddPerson = ({ onClose,onSubmit }) => {
     {
        return alert('Please Fill age Field')
     }
-    onSubmit(name,family,age)
+   onSubmit(name, family, age);
+    toast.success('🦄 Person Added Successfully', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    onClose()
    }
 
     return (
+        
         <>
             <div className="justify-center items-center flex overflow-x-hidden w-full overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className="relative w-auto my-6 mx-auto max-w-3xl w-full">

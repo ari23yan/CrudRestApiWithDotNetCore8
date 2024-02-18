@@ -10,7 +10,6 @@ import UpdatePerson from "../UpdatePerson/UpdatePerson";
 
 const PersonList = ({ persons, onDelete,onSubmit,onShowUpdateModal,onUpdate }) => {
   const [showAddModal, setShowAddModal] = useState(false);
-  const [showUdateModal, setShowupdateModal] = useState(false);
 
 
   const handleToggleAddModal = () => {

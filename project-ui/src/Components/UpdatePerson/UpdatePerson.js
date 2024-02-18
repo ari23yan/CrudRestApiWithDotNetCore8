@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {  toast } from 'react-toastify';
 
 
 const UpdatePerson = ({onClose,onSubmit}) =>
@@ -23,8 +24,18 @@ const UpdatePerson = ({onClose,onSubmit}) =>
         return alert('Please Fill age Field')
      }
      onSubmit(id,name,family,age)
+     toast.success('🦄 Person Updated Successfully', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+     onClose()
     }
-
     return (
         <>
             <div className="justify-center items-center flex overflow-x-hidden w-full overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

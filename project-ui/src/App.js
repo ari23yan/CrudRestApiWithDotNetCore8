@@ -2,6 +2,9 @@ import './App.css';
 import PersonList from './Components/PersonList/PersonList';
 import axios from "axios";
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [persons, setPersonsList] = useState([]);
@@ -45,7 +48,7 @@ function App() {
       .then(response => {
         console.log('response.data', response.data);
         const newPerson = response.data;
-        setPersonsList(prevPersonsList => [...prevPersonsList, newPerson]);
+        setPersonsList(prevPersonsList => [newPerson,...prevPersonsList, ]);
       })
       .catch(error => {
         console.error('Error adding person:', error);
@@ -66,7 +69,6 @@ function App() {
         console.log('response.data', response.data);
         const newPerson = response.data;
         setPersonsList(prevPersonsList => {
-          // Replace the updated person in the list
           const updatedList = prevPersonsList.map(person => {
             if (person.id === newPerson.id) {
               return newPerson;
@@ -101,13 +103,15 @@ function App() {
 
 
   return (
+    
     <div className="App">
       <header className="headerColor">
         {loading ? (
           <p>Loading...</p>
-        ) : (
-          <h1 className="text-amber-400 w-full">
-            <PersonList onSubmit={addPerson} onShowUpdateModal={getPerson} onUpdate={updatePerson} persons={persons} onDelete={deletePerson} />
+          ) : (
+            <h1 className="text-amber-400 w-full">
+            <ToastContainer />
+            <PersonList onSubmit={addPerson} onShowUpdateModal={getPerson} onUpdate={updatePerson} persons={persons}  onDelete={deletePerson} />
           </h1>
         )}
       </header>

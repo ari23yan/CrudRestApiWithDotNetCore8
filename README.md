@@ -1,5 +1,3 @@
- .NET Core 8  + React + MongoDb
-
 Person Crud Project Using :
 <h1>.NET Core 8  + React + MongoDb</h1>
  
